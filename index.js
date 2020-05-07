@@ -2,17 +2,13 @@
 
 const globalEmitter = require('./lib/events.js');
 
-const logPayload = (payload) => {
-  if (typeof payload === 'object') {
-    console.log('EVENT', 'pickup', payload, '\n');
-  } else {
-    console.log('EVENT', payload, '\n');
-  }
+const logPayload = (payload, eventName) => {
+  console.log('EVENT', eventName, payload, '\n');
 };
 
-globalEmitter.on('pickup', logPayload);
-globalEmitter.on('in-transit', logPayload);
-globalEmitter.on('confirmation', logPayload);
+globalEmitter.on('pickup', (payload) => logPayload(payload, 'pickup'));
+globalEmitter.on('in-transit', (payload) => logPayload(payload, 'in-transit'));
+globalEmitter.on('confirmation', (payload) => logPayload(payload, 'delivered'));
 
 require('./lib/vendor.js');
 require('./lib/driver.js');
