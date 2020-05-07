@@ -1,0 +1,27 @@
+{
+  "name": "caps-system",
+  "version": "1.0.0",
+  "description": "Lab 16 and then some for CF JS 401 nights (n16)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "lint": "eslint **/*.js",
+    "test": "jest --verbose --coverage",
+    "test-watch": "jest --watchAll --verbose --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/earljay-caoile-401-advanced-javascript/caps-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/earljay-caoile-401-advanced-javascript/caps-system/issues"
+  },
+  "homepage": "https://github.com/earljay-caoile-401-advanced-javascript/caps-system#readme",
+  "dependencies": {
+    "events": "^3.1.0",
+    "jest": "^26.0.1"
+  }
+}
