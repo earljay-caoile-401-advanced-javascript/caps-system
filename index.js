@@ -1,7 +1,13 @@
+'use strict';
+
 const globalEmitter = require('./lib/events.js');
 
 const logPayload = (payload) => {
-  console.log('EVENT', payload, '\n');
+  if (typeof payload === 'object') {
+    console.log('EVENT', 'pickup', payload, '\n');
+  } else {
+    console.log('EVENT', payload, '\n');
+  }
 };
 
 globalEmitter.on('pickup', logPayload);
