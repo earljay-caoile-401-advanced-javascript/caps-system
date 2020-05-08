@@ -11,7 +11,7 @@ Lab 16 for CF JS 401 Nights (n16)
 #### Submission Reqs
 
 - [submission PR](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/pull/1)
-- [GitHub Actions](https://github.com/earljay-caoile-401-advanced-javascript/auth-server/actions)
+- [GitHub Actions](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/actions)
 
 #### Resources and Documentation
 
