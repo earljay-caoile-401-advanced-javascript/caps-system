@@ -24,7 +24,27 @@ Lab 16 for CF JS 401 Nights (n16)
 - type `npm start` and joyfully watch the app console log
 - press `ctrl + c` to stop
 
-#### Tests
+### Example Output
+```bash
+EVENT pickup
+- time: Thu May 07 2020 11:26:17 GMT-0700 (Pacific Daylight Time)
+- store: one-to-one supply-chains
+- orderID: 88360
+- customer: Timmothy Orn
+- address: 78728 Beier Forge, East Charlie, CA
+
+DRIVER picked up order 88360
+
+EVENT in-transit order 88360
+
+DRIVER delivered 88360
+
+VENDOR says: "Thank you for delivering order 88360"
+
+EVENT delivered order 88360
+```
+
+### Tests
 
 - Testing command: `npm test` from root directory
 
