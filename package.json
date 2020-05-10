@@ -21,8 +21,10 @@
   },
   "homepage": "https://github.com/earljay-caoile-401-advanced-javascript/caps-system#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "events": "^3.1.0",
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "net": "^1.0.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
