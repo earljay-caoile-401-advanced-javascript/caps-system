@@ -3,7 +3,7 @@
 const logPayload = require('../lib/logPayload.js');
 
 describe('logPayload', () => {
-  const pickupPayload = {
+  const pickupContent = {
     time: 'Thu May 07 2020 15:57:29 GMT-0700 (Pacific Daylight Time)',
     store: 'turn-key methodologies',
     orderID: 66432,
@@ -11,41 +11,33 @@ describe('logPayload', () => {
     address: '89438 Wilkinson Ford, Lake Cristian, MT',
   };
 
-  const strPayload = 'order 66432';
   const consoleSpy = jest.spyOn(console, 'log');
 
   afterEach(() => {
     consoleSpy.mockClear();
   });
 
-  it('can properly console log a payload object (pickup)', () => {
-    logPayload(pickupPayload, 'pickup');
+  it('can properly console log a pickup event', () => {
+    const pickupPayload = { event: 'pickup', content: pickupContent };
+    logPayload(pickupPayload);
 
+    expect(consoleSpy.mock.calls[0][0]).toBe('pickup');
     expect(consoleSpy).toHaveBeenCalledTimes(7);
-    expect(consoleSpy.mock.calls[0][0]).toBe('EVENT');
-    expect(consoleSpy.mock.calls[0][1]).toBe('pickup');
 
     let i = 1;
-    Object.keys(pickupPayload).forEach((key) => {
+    Object.keys(pickupContent).forEach((key) => {
       expect(consoleSpy.mock.calls[i++][0]).toBe(
-        `- ${key}: ${pickupPayload[key]}`,
+        `- ${key}: ${pickupContent[key]}`,
       );
     });
   });
 
   it('can properly console log a payload string (in-transit)', () => {
-    logPayload(strPayload, 'in-transit');
+    const inTransitPayload = { event: 'in-transit', content: pickupContent };
+    logPayload(inTransitPayload, 'in-transit');
 
-    expect(consoleSpy.mock.calls[0][0]).toBe('EVENT');
-    expect(consoleSpy.mock.calls[0][1]).toBe('in-transit');
-    expect(consoleSpy.mock.calls[0][2]).toBe(strPayload);
-  });
-
-  it('can properly console log a payload string (delivered)', () => {
-    logPayload(strPayload, 'delivered');
-
-    expect(consoleSpy.mock.calls[0][0]).toBe('EVENT');
-    expect(consoleSpy.mock.calls[0][1]).toBe('delivered');
-    expect(consoleSpy.mock.calls[0][2]).toBe(strPayload);
+    expect(consoleSpy.mock.calls[0][0]).toBe('in-transit');
+    expect(consoleSpy.mock.calls[0][1]).toBe('order');
+    expect(consoleSpy.mock.calls[0][2]).toBe(inTransitPayload.content.orderID);
   });
 });
