@@ -22,29 +22,18 @@ Lab 16 and 17 for CF JS 401 Nights (n16)
 ### Setup
 
 - from the root directory, type `npm i` to install node packages
-- type `npm start` and joyfully watch the app console log
-- press `ctrl + c` to stop
-
-### Example Output
-
-```bash
-EVENT pickup
-- time: Thu May 07 2020 11:26:17 GMT-0700 (Pacific Daylight Time)
-- store: one-to-one supply-chains
-- orderID: 88360
-- customer: Timmothy Orn
-- address: 78728 Beier Forge, East Charlie, CA
-
-DRIVER picked up order 88360
-
-EVENT in-transit order 88360
-
-DRIVER delivered 88360
-
-VENDOR says: "Thank you for delivering order 88360"
-
-EVENT delivered order 88360
-```
+- if you wish to customize your port, create a `.env` file and populate it with a port value like so:
+  ```
+  PORT=5555
+  ```
+- type `cd lib` to enter the lib folder
+- open 3 terminal windows
+- start the three apps in the following order by typing each of the following in a terminal:
+    - `node server.js`
+    - `node vendor.js`
+    - `node driver.js`
+- joyfully watch all 3 terminals populate with console logs
+- press `ctrl + c` to stop the app
 
 ### Tests
 
