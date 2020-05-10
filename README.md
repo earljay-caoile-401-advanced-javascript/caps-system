@@ -22,10 +22,6 @@ Lab 16 and 17 for CF JS 401 Nights (n16)
 ### Setup
 
 - from the root directory, type `npm i` to install node packages
-- if you wish to customize your port, create a `.env` file and populate it with a port value like so:
-  ```
-  PORT=5555
-  ```
 - type `cd lib` to enter the lib folder
 - open 3 terminal windows
 - start the three apps in the following order by typing each of the following in a terminal:
