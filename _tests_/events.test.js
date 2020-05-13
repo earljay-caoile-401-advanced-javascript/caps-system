@@ -1,6 +1,27 @@
 'use strict';
 
-const logPayload = require('../lib/logPayload.js');
+const { convertPayload, logPayload } = require('../lib/handlers.js');
+
+describe('convertPayload', () => {
+  const pickupContent = {
+    time: 'Thu May 07 2020 15:57:29 GMT-0700 (Pacific Daylight Time)',
+    store: 'turn-key methodologies',
+    orderID: 66432,
+    customer: 'Alvis Buckridge',
+    address: '89438 Wilkinson Ford, Lake Cristian, MT',
+  };
+
+  const stringifyInput = JSON.stringify({
+    event: 'pickup',
+    content: pickupContent,
+  });
+
+  const jsonPayload = convertPayload(stringifyInput);
+  const content = jsonPayload.content;
+  Object.keys(content).forEach((key) => {
+    expect(content[key]).toEqual(pickupContent[key]);
+  });
+});
 
 describe('logPayload', () => {
   const pickupContent = {
