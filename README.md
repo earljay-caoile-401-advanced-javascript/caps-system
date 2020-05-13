@@ -1,8 +1,8 @@
-# Lab 17 — TCP Server
+# Lab 18 — Socket.io
 
 ## Displaying Events by Console Logging Fake Deliveries!
 
-Lab 16 and 17 for CF JS 401 Nights (n16)
+Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 
 ### Author: Earl Jay Caoile
 
@@ -10,7 +10,7 @@ Lab 16 and 17 for CF JS 401 Nights (n16)
 
 #### Submission Reqs
 
-- [submission PR](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/pull/2)
+- [submission PR](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/pull/3)
 - [GitHub Actions](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/actions)
 
 #### Resources and Documentation
@@ -37,4 +37,4 @@ Lab 16 and 17 for CF JS 401 Nights (n16)
 
 ### UML
 
-![UML Image](lab-17-uml.png "uml diagram")
+![UML Image](lab-18-uml.png "uml diagram")
