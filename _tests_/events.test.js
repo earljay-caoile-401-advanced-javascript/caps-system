@@ -1,27 +1,6 @@
 'use strict';
 
-const { convertPayload, logPayload } = require('../lib/handlers.js');
-
-describe('convertPayload', () => {
-  const pickupContent = {
-    time: 'Thu May 07 2020 15:57:29 GMT-0700 (Pacific Daylight Time)',
-    store: 'turn-key methodologies',
-    orderID: 66432,
-    customer: 'Alvis Buckridge',
-    address: '89438 Wilkinson Ford, Lake Cristian, MT',
-  };
-
-  const stringifyInput = JSON.stringify({
-    event: 'pickup',
-    content: pickupContent,
-  });
-
-  const jsonPayload = convertPayload(stringifyInput);
-  const content = jsonPayload.content;
-  Object.keys(content).forEach((key) => {
-    expect(content[key]).toEqual(pickupContent[key]);
-  });
-});
+const logPayload = require('../lib/logPayload.js');
 
 describe('logPayload', () => {
   const pickupContent = {
@@ -39,8 +18,7 @@ describe('logPayload', () => {
   });
 
   it('can properly console log a pickup event', () => {
-    const pickupPayload = { event: 'pickup', content: pickupContent };
-    logPayload(pickupPayload);
+    logPayload(pickupContent, 'pickup');
 
     expect(consoleSpy.mock.calls[0][0]).toBe('pickup');
     expect(consoleSpy).toHaveBeenCalledTimes(7);
@@ -54,11 +32,10 @@ describe('logPayload', () => {
   });
 
   it('can properly console log a payload string (in-transit)', () => {
-    const inTransitPayload = { event: 'in-transit', content: pickupContent };
-    logPayload(inTransitPayload, 'in-transit');
+    logPayload(pickupContent, 'in-transit');
 
     expect(consoleSpy.mock.calls[0][0]).toBe('in-transit');
     expect(consoleSpy.mock.calls[0][1]).toBe('order');
-    expect(consoleSpy.mock.calls[0][2]).toBe(inTransitPayload.content.orderID);
+    expect(consoleSpy.mock.calls[0][2]).toBe(pickupContent.orderID);
   });
 });
