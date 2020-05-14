@@ -30,10 +30,18 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
     - `node driver.js`
 - joyfully watch all 3 terminals populate with console logs
 - press `ctrl + c` to stop the app
+- **NOTE**: the `testStore` variable on line 7 of `vendor.js` is left to a static value. This is because the React app for visual testing (see below) is only configured to work when the store name has a specific value. To ignore this and view random store names, erase the value for `testStore` or remove the mention of it on line 15.
 
 ### Tests
 
-- Testing command: `npm test` from root directory
+#### Jest
+- Testing command: `npm test` from root directory (tests aren't required, but I added them anyway)
+
+#### React App
+
+- open the following app: https://5ctmj.csb.app/
+- start up the app as instructed in the setup session
+- watch the terminal console logs appear in sync with the React app UI
 
 ### UML
 
