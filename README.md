@@ -1,6 +1,6 @@
 # Lab 18 — Socket.io
 
-## Displaying Events by Console Logging Fake Deliveries!
+## Emulating Order Deliveries with Socket.io and Console Logs
 
 Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 
@@ -15,8 +15,8 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 
 #### Resources and Documentation
 
-- [Events GitHub Repo](https://github.com/Gozala/events#readme)
 - [Faker GitHub Repo](https://github.com/Marak/Faker.js#readme)
+- [Socket.io Tutorial](https://www.tutorialspoint.com/socket.io/)
 - [Socket.io Emit Cheatsheet](https://socket.io/docs/emit-cheatsheet/)
 
 ### Setup
