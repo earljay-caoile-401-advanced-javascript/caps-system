@@ -15,9 +15,9 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 
 #### Resources and Documentation
 
-- [Code Fellows Supergoose](https://www.npmjs.com/package/@code-fellows/supergoose)
 - [Events GitHub Repo](https://github.com/Gozala/events#readme)
 - [Faker GitHub Repo](https://github.com/Marak/Faker.js#readme)
+- [Socket.io Emit Cheatsheet](https://socket.io/docs/emit-cheatsheet/)
 
 ### Setup
 
