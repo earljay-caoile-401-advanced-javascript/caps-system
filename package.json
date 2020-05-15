@@ -1,6 +1,6 @@
 {
   "name": "caps-system",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "Lab 16 and then some for CF JS 401 nights (n16)",
   "main": "index.js",
   "scripts": {
@@ -21,8 +21,12 @@
   },
   "homepage": "https://github.com/earljay-caoile-401-advanced-javascript/caps-system#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "events": "^3.1.0",
+    "express": "^4.17.1",
     "faker": "^4.1.0",
+    "morgan": "^1.10.0",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0"
   },
