@@ -27,9 +27,9 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 - type `cd lib` to enter the lib folder
 - open 3 terminal windows
 - start the three apps in the following order by typing each of the following in a terminal:
-    - `node server.js`
-    - `node vendor.js`
-    - `node driver.js`
+    - `node server.js` or `nodemon server.js`
+    - `node vendor.js` or `nodemon vendor.js`
+    - `node driver.js` or `nodemon driver.js`
 - joyfully watch all 3 terminals populate with console logs
 - press `ctrl + c` to stop the app
 - **NOTE**: the `testStore` variable on line 7 of `vendor.js` is left to a static value. This is because the React app for visual testing (see below) is only configured to work when the store name has a specific value. To ignore this and view random store names, erase the value for `testStore` or remove the mention of it on line 15.
@@ -38,7 +38,7 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 
 The Express server with a `POST` API endpoint has also been implemented! To get this working, do the following:
 - from the root folder, go the express-server folder with `cd express-server`
-- start the server with `node index.js`
+- start the server with `node index.js` or `nodemon index.js`
 - open up a program like Postman or Insomnia that can send a POST request
 - enter an order object to send to CSPS server
 - **NOTE**: the express server is configured to automatically generate an order with random properties if the user sends a blank object. Furthermore, there is also a store property that can be configured in the same way as the store property in `vendor.js`. See instructions above for details.
