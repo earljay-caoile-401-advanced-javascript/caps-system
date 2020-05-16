@@ -1,8 +1,8 @@
-# Lab 18 — Socket.io
+# Lab 19 — Message Queues
 
 ## Emulating Order Deliveries with Socket.io and Console Logs
 
-Lab 16, 17, and 18 for CF JS 401 Nights (n16)
+Lab 16, 17, 18, and 19 for CF JS 401 Nights (n16)
 
 ### Author: Earl Jay Caoile
 
@@ -10,7 +10,7 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 
 #### Submission Reqs
 
-- [submission PR](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/pull/3)
+- [submission PR](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/pull/4)
 - [GitHub Actions](https://github.com/earljay-caoile-401-advanced-javascript/caps-system/actions)
 
 #### Resources and Documentation
@@ -27,9 +27,9 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 - type `cd lib` to enter the lib folder
 - open 3 terminal windows
 - start the three apps in the following order by typing each of the following in a terminal:
-    - `node server.js` or `nodemon server.js`
-    - `node vendor.js` or `nodemon vendor.js`
-    - `node driver.js` or `nodemon driver.js`
+  - `node server.js` or `nodemon server.js`
+  - `node vendor.js` or `nodemon vendor.js`
+  - `node driver.js` or `nodemon driver.js`
 - joyfully watch all 3 terminals populate with console logs
 - press `ctrl + c` to stop the app
 - **NOTE**: the `testStore` variable on line 7 of `vendor.js` is left to a static value. This is because the React app for visual testing (see below) is only configured to work when the store name has a specific value. To ignore this and view random store names, erase the value for `testStore` or remove the mention of it on line 15.
@@ -37,6 +37,7 @@ Lab 16, 17, and 18 for CF JS 401 Nights (n16)
 #### Stretch Goal
 
 The Express server with a `POST` API endpoint has also been implemented! To get this working, do the following:
+
 - from the root folder, go the express-server folder with `cd express-server`
 - start the server with `node index.js` or `nodemon index.js`
 - open up a program like Postman or Insomnia that can send a POST request
@@ -46,6 +47,7 @@ The Express server with a `POST` API endpoint has also been implemented! To get 
 ### Tests
 
 #### Jest
+
 - Testing command: `npm test` from root directory (tests aren't required, but I added them anyway)
 
 #### React App
