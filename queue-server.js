@@ -11,13 +11,13 @@ io.on('connection', (socket) => {
   console.log('Connected', socket.id);
 
   socket.on('subscribe', (vendor) => {
+    socket.join(vendor);
     if (!messages[vendor]) {
       messages[vendor] = {};
     }
   });
 
   socket.on('getAll', (vendor) => {
-    socket.join(vendor);
     const vendorEvents = messages[vendor];
     if (vendorEvents) {
       for (const index in vendorEvents) {
@@ -29,12 +29,11 @@ io.on('connection', (socket) => {
 
   socket.on('delivered', (payload) => {
     const { vendor, orderID } = payload;
-    socket.join(vendor);
     if (!messages[vendor]) {
       messages[vendor] = {};
     }
     messages[vendor][orderID] = payload;
-    io.emit(vendor).emit('delivered', payload);
+    io.to(vendor).emit('delivered', payload);
   });
 
   socket.on('received', (payload) => {
