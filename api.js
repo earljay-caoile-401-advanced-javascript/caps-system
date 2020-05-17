@@ -3,12 +3,18 @@
 const io = require('socket.io-client');
 const express = require('express');
 const app = express();
+const apiPort = process.env.API_PORT || 3000;
+const socket = io.connect('http://localhost:3001/');
 
-const socket = io.connect('http://localhost:3000/db');
+app.post('/delivery/:vendor/:orderID', (req, res) => {
+  const payload = {
+    vendor: req.params.vendor,
+    orderID: req.params.orderID,
+  };
 
-app.get('/', (req, res) => {
-  socket.emit('testEvent', 'Hello World');
-  res.send('ok');
+  console.log('delivery', payload);
+  socket.emit('delivered', payload);
+  res.status(200).send('order succesfully delivered!');
 });
 
-app.listen(8080, () => console.log('api is running on 8080'));
+app.listen(apiPort, () => console.log(`API Server up and running on ${apiPort}`));

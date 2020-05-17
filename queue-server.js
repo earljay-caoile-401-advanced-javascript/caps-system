@@ -1,90 +1,44 @@
 'use strict';
 
 require('dotenv').config();
-const io = require('socket.io')(process.env.PORT || 3000);
-const uuid = require('uuid').v4;
+const port = process.env.QUEUE_SERVER_PORT || 3001;
+const io = require('socket.io')(port);
 
+console.log('Message Queue Server up and running on', port);
 let messages = {};
-io.of('db', socket => {
-  console.log('welcome to the db channel', socket.id);
 
-  socket.on('subscribe', payload => {
-    const { event, id } = payload;
-    if (!messages[event]) {
-      messages[event] = {};
-    }
-    if (!messages[event][id]) {
-      messages[event][id] = {};
-    }
+io.on('connection', (socket) => {
+  console.log('Connected', socket.id);
 
-    console.log(event);
-    console.log(id);
-  });
-
-  socket.on('testEvent', payload => {
-    let event = 'testEvent';
-    let messageID = uuid();
-
-    for (let subscriber in messages['testEvent']) {
-      messages[event][subscriber][messageID] = payload;
-    }
-
-    console.log(messages);
-
-    let msgObj = { messageID, payload };
-
-    io.of('db').emit('testEvent', msgObj);
-  });
-
-  socket.on('package-delivery', payload => {
-    let event = 'package-delivery';
-    let messageID = uuid();
-
-    for (let subscriber in messages['package-delivery']) {
-      messages[event][subscriber][messageID] = payload;
-    }
-
-    console.log('line 47', messages);
-
-    let msgObj = { messageID, payload };
-
-    io.of('db').emit('package-delivery', msgObj);
-  });
-
-  socket.on('getMissed', payload => {
-    let { clientID, event } = payload;
-    // console.log('payload in getMissed', payload, messages);
-
-    for (const messageID in messages[event][clientID]) {
-      let payload = messages[event][clientID][messageID];
-      io.of('db')
-        .to(socket.id)
-        .emit(event, { messageID, payload });
-      console.log('resend', messageID);
+  socket.on('subscribe', (vendor) => {
+    if (!messages[vendor]) {
+      messages[vendor] = {};
     }
   });
 
-  socket.on('getMissedStuff', payload => {
-    let { clientID, event } = payload;
-
-    for (const messageID in messages[event][clientID]) {
-      let payload = messages[event][clientID][messageID];
-      io.of('db')
-        .to(socket.id)
-        .emit(event, { messageID, payload });
-      console.log('resend', messageID);
+  socket.on('getAll', (vendor) => {
+    socket.join(vendor);
+    const vendorEvents = messages[vendor];
+    if (vendorEvents) {
+      for (const index in vendorEvents) {
+        const payload = vendorEvents[index];
+        io.to(vendor).emit('delivered', payload);
+      }
     }
   });
 
-  socket.on('received', payload => {
-    const { messageID, clientID, event } = payload;
-    delete messages[event][clientID][messageID];
-    console.log('after', messages);
+  socket.on('delivered', (payload) => {
+    const { vendor, orderID } = payload;
+    socket.join(vendor);
+    if (!messages[vendor]) {
+      messages[vendor] = {};
+    }
+    messages[vendor][orderID] = payload;
+    io.emit(vendor).emit('delivered', payload);
   });
 
-  socket.on('package-delivered', payload => {
-    const { messageID, clientID, event } = payload;
-    delete messages[event][clientID][messageID];
-    console.log('after', messages);
+  socket.on('received', (payload) => {
+    const { vendor, orderID } = payload;
+    delete messages[vendor][orderID];
   });
 });
