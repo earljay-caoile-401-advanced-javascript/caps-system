@@ -1,5 +1,5 @@
 'use strict';
 
-const setUpShop = require('./lib/setUpShop.js');
+const setUpShop = require('./lib/set-up-shop.js');
 const vendor = 'flower-shop';
 setUpShop(vendor);
