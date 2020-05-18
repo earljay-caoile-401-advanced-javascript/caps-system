@@ -24,9 +24,8 @@ Lab 16, 17, 18, and 19 for CF JS 401 Nights (n16)
 #### Main Lab Requirements
 
 - from the root directory, type `npm i` to install node packages
-- type `cd lib` to enter the lib folder
-- open 3 terminal windows
-- start the three apps in the following order by typing each of the following in a terminal:
+- open 4 terminal windows
+- start the 4 apps in the following order by typing each of the following in a terminal:
   - `npm run start-queue` (starts queue-server.js)
   - `npm run start-api` (starts api.js)
   - `npm run start-vendor-01` (starts vendor-01.js)
