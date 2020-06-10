@@ -18,8 +18,7 @@ describe('logPayload', () => {
   });
 
   it('can properly console log a pickup event', () => {
-    const pickupPayload = { event: 'pickup', content: pickupContent };
-    logPayload(pickupPayload);
+    logPayload(pickupContent, 'pickup');
 
     expect(consoleSpy.mock.calls[0][0]).toBe('pickup');
     expect(consoleSpy).toHaveBeenCalledTimes(7);
@@ -33,11 +32,10 @@ describe('logPayload', () => {
   });
 
   it('can properly console log a payload string (in-transit)', () => {
-    const inTransitPayload = { event: 'in-transit', content: pickupContent };
-    logPayload(inTransitPayload, 'in-transit');
+    logPayload(pickupContent, 'in-transit');
 
     expect(consoleSpy.mock.calls[0][0]).toBe('in-transit');
     expect(consoleSpy.mock.calls[0][1]).toBe('order');
-    expect(consoleSpy.mock.calls[0][2]).toBe(inTransitPayload.content.orderID);
+    expect(consoleSpy.mock.calls[0][2]).toBe(pickupContent.orderID);
   });
 });
