@@ -1,13 +1,17 @@
 {
   "name": "caps-system",
-  "version": "3.1.0",
+  "version": "4.0.0",
   "description": "Lab 16 and then some for CF JS 401 nights (n16)",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "lint": "eslint **/*.js",
     "test": "jest --verbose --coverage",
-    "test-watch": "jest --watchAll --verbose --coverage"
+    "test-watch": "jest --watchAll --verbose --coverage",
+    "start-queue": "node queue-server.js",
+    "start-api": "node api.js",
+    "start-vendor-01": "node vendor-01.js",
+    "start-vendor-02": "node vendor-02.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +32,8 @@
     "faker": "^4.1.0",
     "morgan": "^1.10.0",
     "socket.io": "^2.3.0",
-    "socket.io-client": "^2.3.0"
+    "socket.io-client": "^2.3.0",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

@@ -5,8 +5,8 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const notFoundHandler = require('./middleware/404.js');
-const errorHandler = require('./middleware/500.js');
+const notFoundHandler = require('../lib/middleware/404.js');
+const errorHandler = require('../lib//middleware/500.js');
 
 const io = require('socket.io-client');
 const cspsChannel = io.connect(`http://localhost:3000/csps`);
